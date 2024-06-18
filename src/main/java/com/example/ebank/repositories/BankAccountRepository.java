@@ -1,8 +1,12 @@
 package com.example.ebank.repositories;
 
+import com.example.ebank.entities.BankAccount;
 import com.example.ebank.entities.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface CustomerRepository extends JpaRepository<Customer,Long> {
+import java.util.List;
 
+public interface BankAccountRepository extends JpaRepository<BankAccount,String> {
+
+    List<BankAccount> findBankAccountsByCustomer(Customer customer);
 }

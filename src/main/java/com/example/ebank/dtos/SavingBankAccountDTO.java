@@ -1,26 +1,52 @@
 package com.example.ebank.dtos;
 
-import com.example.ebank.entities.AccountOperation;
-import com.example.ebank.entities.Customer;
 import com.example.ebank.enums.AccountStatus;
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.util.Date;
-import java.util.List;
 
 @Data
-public class BankAccountDTO {
-    @Id
+public class SavingBankAccountDTO extends BankAccountDTO {
     private String id;
     private double balance;
     private Date createdAt;
-    @Enumerated(EnumType.STRING)
-    private AccountStatus status;
-    @ManyToOne
-    private Customer customer;
-    @OneToMany(mappedBy = "bankAccount",fetch = FetchType.LAZY)
-    private List<AccountOperation> accountOperations;
+    public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public double getBalance() {
+		return balance;
+	}
+	public void setBalance(double balance) {
+		this.balance = balance;
+	}
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+	public AccountStatus getStatus() {
+		return status;
+	}
+	public void setStatus(AccountStatus status) {
+		this.status = status;
+	}
+	public CustomerDTO getCustomerDTO() {
+		return customerDTO;
+	}
+	public void setCustomerDTO(CustomerDTO customerDTO) {
+		this.customerDTO = customerDTO;
+	}
+	public double getInterestRate() {
+		return interestRate;
+	}
+	public void setInterestRate(double interestRate) {
+		this.interestRate = interestRate;
+	}
+	private AccountStatus status;
+    private CustomerDTO customerDTO;
+    private double interestRate;
 }
